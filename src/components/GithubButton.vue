@@ -21,7 +21,7 @@ defineProps<{
   padding: 6px 8px;
   background-color: var(--vt-c-white);
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--vt-c-black);
   text-decoration: none;
   font-weight: 600;

@@ -29,6 +29,7 @@ const getPercentage = (votes: number): number => {
 <template>
   <div class="poll-container">
     <h2 class="question">What is the best Website Builder ?</h2>
+    <p class="subtext">You can vote multiple times</p>
 
     <div class="options">
       <div v-for="option in options" :key="option.id" class="option" @click="vote(option)">
@@ -45,8 +46,9 @@ const getPercentage = (votes: number): number => {
 
 <style scoped>
 .poll-container {
-  background: var(--color-background-soft);
-  border-radius: 12px;
+  margin-top: 100px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   padding: 2rem;
   max-width: 600px;
   width: 100%;
@@ -55,8 +57,12 @@ const getPercentage = (votes: number): number => {
 .question {
   font-size: 1.5rem;
   color: var(--color-text);
-  margin-bottom: 1.5rem;
   text-align: left;
+}
+.subtext {
+  font-size: 1rem;
+  color: var(--color-text-soft);
+  margin-bottom: 1.5rem;
 }
 
 .options {
@@ -67,7 +73,7 @@ const getPercentage = (votes: number): number => {
 
 .option {
   position: relative;
-  background: var(--color-background-soft2);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
@@ -76,8 +82,7 @@ const getPercentage = (votes: number): number => {
 }
 
 .option:hover {
-  background: #ececec;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .option:active {
@@ -90,6 +95,9 @@ const getPercentage = (votes: number): number => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .option-text {
@@ -108,7 +116,7 @@ const getPercentage = (votes: number): number => {
   left: 0;
   top: 0;
   height: 100%;
-  background: rgba(100, 108, 255, 0.2);
+  background: var(--color-background-soft2);
   transition: width 0.6s ease-out;
 }
 </style>
