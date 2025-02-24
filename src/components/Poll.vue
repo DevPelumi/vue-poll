@@ -139,7 +139,7 @@ const resetPoll = () => {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .total-votes {

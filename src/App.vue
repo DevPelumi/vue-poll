@@ -8,7 +8,7 @@ import GithubButton from './components/GithubButton.vue'
   <header>
     <div class="menu">
       <div class="logo"><VzyIcon /> Tech Assessment</div>
-      <GithubButton href="" />
+      <GithubButton href="https://github.com/DevPelumi/vue-poll" />
     </div>
   </header>
 
