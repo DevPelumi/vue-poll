@@ -24,22 +24,33 @@ const getPercentage = (votes: number): number => {
   if (totalVotes.value === 0) return 0
   return Math.round((votes / totalVotes.value) * 100)
 }
+
+const resetPoll = () => {
+  options.value.forEach((option) => (option.votes = 0))
+  totalVotes.value = 0
+}
 </script>
 
 <template>
   <div class="poll-container">
-    <h2 class="question">What is the best Website Builder ?</h2>
-    <p class="subtext">You can vote multiple times</p>
+    <div class="header">
+      <h2 class="question">What is the best Website Builder ?</h2>
+      <p class="subtext">You can vote multiple times</p>
+    </div>
 
     <div class="options">
       <div v-for="option in options" :key="option.id" class="option" @click="vote(option)">
         <div class="option-content">
           <span class="option-text">{{ option.text }}</span>
-          <span class="percentage">{{ getPercentage(option.votes) }}%</span>
+          <span class="option-percentage">{{ getPercentage(option.votes) }}%</span>
         </div>
 
         <div class="progress-bar" :style="{ width: getPercentage(option.votes) + '%' }"></div>
       </div>
+    </div>
+    <div class="poll-stats">
+      <span class="total-votes">{{ totalVotes }} votes</span>
+      <a href="#" class="reset-button" @click.prevent="resetPoll"> Reset </a>
     </div>
   </div>
 </template>
@@ -105,7 +116,7 @@ const getPercentage = (votes: number): number => {
   font-weight: 500;
 }
 
-.percentage {
+.option-percentage {
   font-weight: bold;
   color: var(--color-text);
   font-size: 0.9rem;
@@ -118,5 +129,35 @@ const getPercentage = (votes: number): number => {
   height: 100%;
   background: var(--color-background-soft2);
   transition: width 0.6s ease-out;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.poll-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.total-votes {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+}
+
+.reset-button {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background: var(--color-background-soft2);
+}
+
+.reset-button:hover {
+  color: var(--color-text);
 }
 </style>
